@@ -7,8 +7,7 @@ type DiskColor =
 type Position = char * int
 
 type Player = {
-    //playerId: 
-    diskColor: DiskColor
+    color: DiskColor
 }
 
 type Tile = {
