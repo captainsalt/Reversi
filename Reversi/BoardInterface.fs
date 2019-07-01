@@ -65,9 +65,9 @@ let captureSurroundingTiles (startingTilePos: Position) (board: GameBoard) =
                 | Some color when color = opponentColor -> 
                     let newRefTile = addDirection refTilePos direction
                     getTileCaptives newRefTile opponentColor direction (tile :: capturedTiles)
-                | Some _ -> 
+                | Some color when color = getOppositeDisk opponentColor -> 
                     capturedTiles
-                | None -> 
+                | _ ->
                     []
            | None -> 
                 []
