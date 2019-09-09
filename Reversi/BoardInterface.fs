@@ -55,7 +55,7 @@ let captureSurroundingTiles (startingTilePos: Position) (board: GameBoard) =
 
     let opponentColor = getOppositeDisk ((getTile startingTilePos board).Value.disk.Value)
 
-    let rec getTileCaptives (refTilePos: Position) (opponentColor: DiskColor) (direction: int * int) (capturedTiles: Tile list) = 
+    let rec getTileCaptives (refTilePos: Position) (direction: int * int) (capturedTiles: Tile list) = 
            let pos = direction +> refTilePos
            let tileToCapture = getTile pos board
 
@@ -64,7 +64,7 @@ let captureSurroundingTiles (startingTilePos: Position) (board: GameBoard) =
                 match tile.disk with 
                 | Some color when color = opponentColor -> 
                     let newRefTile = direction +> refTilePos
-                    getTileCaptives newRefTile opponentColor direction (tile :: capturedTiles)
+                    getTileCaptives newRefTile direction (tile :: capturedTiles)
                 | Some color when color = getOppositeDisk opponentColor -> 
                     capturedTiles
                 | _ ->
@@ -73,7 +73,7 @@ let captureSurroundingTiles (startingTilePos: Position) (board: GameBoard) =
                 []
     
     directions
-    |> List.collect (fun dir -> getTileCaptives startingTilePos opponentColor dir []) 
+    |> List.collect (fun dir -> getTileCaptives startingTilePos dir []) 
     |> List.collect (fun tile -> setTileColor (getOppositeDisk opponentColor) tile.position board)
 
 let printBoard (board: GameBoard) = 
