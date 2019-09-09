@@ -42,9 +42,10 @@ let setTileColor (newColor: DiskColor) (position: Position) (board: GameBoard) =
         )
 
 let captureSurroundingTiles (startingTilePos: Position) (board: GameBoard) = 
-    let addDirection (pos: Position) (dir: int * int) = 
-        let ( +> ) (ch: char) (i: int) = int ch + i |> char
-        (fst pos +> fst dir, snd pos + snd dir)
+    let ( +> ) (dir: int * int) (pos: Position) = 
+        let letterCoord = int (fst pos) + fst dir |> char
+        let numberCoord = snd pos + snd dir
+        (letterCoord, numberCoord)
 
     let directions = [
         ( 1, -1 ); ( 1,  0); ( 1, 1 )
@@ -55,14 +56,14 @@ let captureSurroundingTiles (startingTilePos: Position) (board: GameBoard) =
     let opponentColor = getOppositeDisk ((getTile startingTilePos board).Value.disk.Value)
 
     let rec getTileCaptives (refTilePos: Position) (opponentColor: DiskColor) (direction: int * int) (capturedTiles: Tile list) = 
-           let pos = addDirection refTilePos direction
+           let pos = direction +> refTilePos
            let tileToCapture = getTile pos board
 
            match tileToCapture with 
            | Some tile ->
                 match tile.disk with 
                 | Some color when color = opponentColor -> 
-                    let newRefTile = addDirection refTilePos direction
+                    let newRefTile = direction +> refTilePos
                     getTileCaptives newRefTile opponentColor direction (tile :: capturedTiles)
                 | Some color when color = getOppositeDisk opponentColor -> 
                     capturedTiles
