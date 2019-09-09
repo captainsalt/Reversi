@@ -48,9 +48,9 @@ let captureSurroundingTiles (startingTilePos: Position) (board: GameBoard) =
         (letterCoord, numberCoord)
 
     let directions = [
-        ( 1, -1 ); ( 1,  0); ( 1, 1 )
-        ( 0, -1 );           ( 0, 1 )
         (-1, -1 ); (-1, 0 ); (-1, 1 )
+        ( 0, -1 ); ( 0, 1 )
+        ( 1, -1 ); ( 1,  0); ( 1, 1 )
     ]
 
     let opponentColor = getOppositeDisk ((getTile startingTilePos board).Value.disk.Value)
