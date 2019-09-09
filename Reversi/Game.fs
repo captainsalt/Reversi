@@ -32,7 +32,7 @@ let rec coordinatePrompt (message: string) =
     | Coordinate (ch, i) ->
         (ch, i)
     | _ ->
-        printfn "Invalid input"
+        printfn "Invalid Coordinate"
         coordinatePrompt message
 
 let getValidMoves (currentColor: DiskColor) = ()
