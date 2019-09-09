@@ -72,10 +72,8 @@ let captureSurroundingTiles (startingTilePos: Position) (board: GameBoard) =
                 []
     
     directions
-    |> List.map (fun dir -> getTileCaptives startingTilePos opponentColor dir []) 
-    |> List.concat
-    |> List.map (fun tile -> setTileColor (getOppositeDisk opponentColor) tile.position board)
-    |> List.concat
+    |> List.collect (fun dir -> getTileCaptives startingTilePos opponentColor dir []) 
+    |> List.collect (fun tile -> setTileColor (getOppositeDisk opponentColor) tile.position board)
 
 let printBoard (board: GameBoard) = 
     for row in 0..7  do
