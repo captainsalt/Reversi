@@ -4,6 +4,11 @@ type DiskColor =
 | White 
 | Black
 
+type Score = {
+    white: int
+    black: int
+}
+
 type Position = char * int
 
 type Player = {
