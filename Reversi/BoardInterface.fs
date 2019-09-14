@@ -76,9 +76,9 @@ let getTilesToCapture (startingTile: Tile) (board: GameBoard) =
     |> List.collect (fun dir -> getTileCaptives startingTile.position dir []) 
 
 /// Returns a new board with the tiles captured when a disk is placed 
-let captureTiles (tiles: Tile list * DiskColor) (board: GameBoard) = 
-    fst tiles
-    |> List.collect (fun tile -> setTileColor (snd tiles) tile.position board)
+let captureTiles (tiles: Tile list) (color: DiskColor) (board: GameBoard) = 
+    tiles
+    |> List.collect (fun tile -> setTileColor color tile.position board)
 
 let printBoard (board: GameBoard) = 
     for row in 0..7  do
