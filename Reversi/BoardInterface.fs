@@ -5,12 +5,12 @@ let getOppositeDisk = function | White -> Black | Black -> White
 
 let generateBoard = 
     let initTiles = function
-    | ('e', 4) | ('d', 5) -> Some White
-    | ('e', 5) | ('d', 4) -> Some Black
+    | ('E', 4) | ('D', 5) -> Some White
+    | ('E', 5) | ('D', 4) -> Some Black
     | _ -> None
 
     [
-        for row in 'a'..'h' do 
+        for row in 'A'..'H' do 
             yield [ for col in 1..8 ->  { position = (row, col); disk = initTiles (row, col) } ]
     ]
 
