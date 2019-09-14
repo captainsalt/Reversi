@@ -6,7 +6,6 @@ open Game
 [<EntryPoint>]
 let main argv =
     let board = generateBoard 
-    let players = getPlayers
 
     let rec gameLoop (score: Score) (player: Player) (board: GameBoard) = 
         printBoard board

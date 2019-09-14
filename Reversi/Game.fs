@@ -17,13 +17,6 @@ let private (|Coordinate|_|) input =
         |> Some
     | false -> None
 
-let getPlayers = 
-    match Random().NextDouble() with 
-    | num when num <= 0.5 -> 
-        [{ color = White }; { color = Black }]
-    | _ -> 
-        [{ color = Black }; { color = White }]
-
 let rec coordinatePrompt (message: string) = 
     printf "%s: " message
     let response = Console.ReadLine()
