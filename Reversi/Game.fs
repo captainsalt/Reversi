@@ -8,7 +8,7 @@ open System.Text.RegularExpressions
 //Plater 2 is black
 
 let private (|Coordinate|_|) input =
-    let result = Regex(@"[A-Ha-h]\s*(,?\s*)?[1-8]").Match(input)
+    let result = Regex(@"([A-Ha-h])\s*(?:,?\s*)?([1-8])").Match(input)
 
     match result.Success with 
     | true -> 
