@@ -38,7 +38,7 @@ let setTileColor (newColor: DiskColor) (position: Position) (board: GameBoard) =
                             tile
                     )
             else
-                row
+                  row
         )
 
 let ( +> ) (dir: int * int) (pos: Position) = 
@@ -47,14 +47,14 @@ let ( +> ) (dir: int * int) (pos: Position) =
     (letterCoord, numberCoord)
 
 /// Returns a list of tiles that get captured when you place a disk on startigTile's position
-let getTilesToCapture (startingTile: Tile) (board: GameBoard) = 
+let showCapturedTiles (startingTile: Tile) (disk: DiskColor) (board: GameBoard) = 
     let directions = [
         (-1, -1 ); (-1, 0 ); (-1, 1 )
         ( 0, -1 );           ( 0, 1 )
         ( 1, -1 ); ( 1,  0); ( 1, 1 )
     ]
 
-    let opponentColor = getOppositeDisk ((getTile startingTile.position board).Value.disk.Value)
+    let opponentColor = getOppositeDisk disk
 
     let rec getTileCaptives (refTilePos: Position) (direction: int * int) (capturedTiles: Tile list) = 
            let targetTile = getTile (direction +> refTilePos) board
