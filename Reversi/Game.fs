@@ -19,7 +19,7 @@ let private (|Coordinate|_|) input =
 
 let rec coordinatePrompt (message: string) = 
     printf "%s: " message
-    let response = Console.ReadLine()
+    let response = Console.ReadLine().ToUpper()
 
     match response with 
     | Coordinate (ch, i) ->
