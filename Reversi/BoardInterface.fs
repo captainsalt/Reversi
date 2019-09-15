@@ -24,7 +24,7 @@ let getTile (position: Position) (board: GameBoard) =
     | :? System.Collections.Generic.KeyNotFoundException ->
         None
 
-let setTileColor (newColor: DiskColor) (position: Position) (board: GameBoard) = 
+let setTileColor (newColor: Disk) (position: Position) (board: GameBoard) = 
     board 
     |> List.map 
         (fun row -> 
@@ -47,7 +47,7 @@ let ( +> ) (dir: int * int) (pos: Position) =
     (letterCoord, numberCoord)
 
 /// Returns a list of tiles that get captured when you place a disk on startigTile's position
-let showCapturedTiles (startingTile: Tile) (disk: DiskColor) (board: GameBoard) = 
+let showCapturedTiles (startingTile: Tile) (disk: Disk) (board: GameBoard) = 
     let directions = [
         (-1, -1 ); (-1, 0 ); (-1, 1 )
         ( 0, -1 );           ( 0, 1 )
@@ -76,7 +76,7 @@ let showCapturedTiles (startingTile: Tile) (disk: DiskColor) (board: GameBoard) 
     |> List.collect (fun dir -> getTileCaptives startingTile.position dir []) 
 
 /// Returns a new board with the tiles captured when a disk is placed 
-let captureTiles (tiles: Tile list) (color: DiskColor) (board: GameBoard) = 
+let captureTiles (tiles: Tile list) (color: Disk) (board: GameBoard) = 
     tiles
     |> List.collect (fun tile -> setTileColor color tile.position board)
 

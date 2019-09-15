@@ -28,4 +28,4 @@ let rec coordinatePrompt (message: string) =
         printfn "Invalid Coordinate"
         coordinatePrompt message
 
-let getValidMoves (currentColor: DiskColor) = ()
+let getValidMoves (currentColor: Disk) = ()

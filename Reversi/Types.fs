@@ -1,6 +1,6 @@
 ﻿module Types
 
-type DiskColor = 
+type Disk = 
 | White 
 | Black
 
@@ -12,12 +12,12 @@ type Score = {
 type Position = char * int
 
 type Player = {
-    color: DiskColor
+    color: Disk
 }
 
 type Tile = {
     position: Position
-    disk: DiskColor option
+    disk: Disk option
 }
 
 type GameBoard = Tile list list
