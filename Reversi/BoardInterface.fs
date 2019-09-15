@@ -38,7 +38,7 @@ let setTileColor (newColor: Disk) (position: Position) (board: GameBoard) =
                             tile
                     )
             else
-                  row
+                row
         )
 
 let ( +> ) (dir: int * int) (pos: Position) = 
